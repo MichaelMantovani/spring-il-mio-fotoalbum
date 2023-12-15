@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<div class="container mt-5">
+		<form class="row g-3" th:object="${photo}">
+			<div class="col-md-6">
+				<label for="title" class="form-label">Title</label>
+				<input type="text" class="form-control" id="title" th:field="*{title}">
+			</div>
+			<div clas="col-12">
+				<label for="description" class="form-label">Description</label>
+				<textarea th:field="*{description}" class="form-control" id="description"></textarea>
+			</div>
+			<div class="col-md-6">
+				<label for="url" class="form-label">Photo Url</label>
+				<input type="text" class="form-control" id="url" th:field="*{url}">
+			</div>
+			<div class="col-12">
+				Choose your categories :
+				<div class="d-flex gap-3 mb-5 mt-3">
+					<div th:each="category : ${categories}" th:object="${category}">
+						<input class="mb-2" type="checkbox" th:id="*{'category-' + id}" th:value="*{id}"
+							th:field="${photo.categories}">
+						<label th:for="*{'category-' + id}">
+							[[*{name}]]
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-12">
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" id="visible" th:field="*{visible}">
+					<label class="form-check-label" for="visible">Visible</label>
+				</div>
+			</div>
+			<div class="col-12">
+				<button type="submit" class="btn btn-primary">Create new photo</button>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>
