@@ -22,7 +22,7 @@
 				<label for="url" class="form-label">Photo Url</label>
 				<input type="text" class="form-control" id="url" th:field="*{url}">
 			</div>
-			<div class="col-12">
+			<div class="col-12" th:if="${categories}">
 				Choose your categories :
 				<div class="d-flex gap-3 mb-5 mt-3">
 					<div th:each="category : ${categories}" th:object="${category}">
@@ -41,7 +41,9 @@
 				</div>
 			</div>
 			<div class="col-12">
-				<button type="submit" class="btn btn-primary">Create new photo</button>
+				<button th:if="${photo.id == 0}" type="submit" class="btn btn-primary btn-sm me-1">Create Photo</button>
+				<button th:if="${photo.id != 0}" type="submit" class="btn btn-warning btn-sm me-1">Edit Photo</button>
+				<a th:replace="returnButton :: button('/', 'Return')"></a>
 			</div>
 		</form>
 	</div>

@@ -2,8 +2,10 @@ package org.java.spring.controller;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.java.spring.db.pojo.Category;
 import org.java.spring.db.pojo.Photo;
+import org.java.spring.db.pojo.Pizza;
 import org.java.spring.db.serv.CategoryService;
 import org.java.spring.db.serv.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +61,34 @@ public class PhotoController {
 			System.out.println(bindingResult);
 			model.addAttribute("photo", photo);
 			return "photoForm";
+		}
+
+		try {
+			photoServ.save(photo);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		return "redirect:/";
+	}
+	
+	@GetMapping("photo/{id}/edit")
+	public String editPhoto(Model model, @PathVariable int id) {
+		
+		Photo photo = photoServ.findById(id);
+		model.addAttribute("photo", photo);
+		
+		return "photoForm";
+	}
+	@PostMapping("photo/{id}/edit")
+	public String updatePizza(Model model, @Valid @ModelAttribute Photo photo, BindingResult bindingResult) {
+
+
+		if (bindingResult.hasErrors()) {
+
+			System.out.println(bindingResult);
+			model.addAttribute("photo", photo);
+			return "pizzaForm";
 		}
 
 		try {

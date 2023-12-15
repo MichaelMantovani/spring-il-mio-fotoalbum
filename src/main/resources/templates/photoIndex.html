@@ -10,21 +10,22 @@
 <body>
 	<div class="container">
 		<div class="d-flex gap-3 align-items-start mt-4">
-				<form class="d-flex w-25 mb-4" role="search">
-					<input class="form-control me-2" type="search" placeholder="Search" th:value="*{searchValue}"
-						name="searchValue">
-					<button class="btn btn-outline-success" type="submit">Search</button>
-				</form>
-				<a href="/photo/create" class="btn btn-primary">Add new photo</a>
-			</div>
+			<form class="d-flex w-25 mb-4" role="search">
+				<input class="form-control me-2" type="search" placeholder="Search" th:value="*{searchValue}"
+					name="searchValue">
+				<button class="btn btn-outline-success" type="submit">Search</button>
+			</form>
+			<a href="/photo/create" class="btn btn-primary">Add new photo</a>
+		</div>
 		<div class="row row-cols-4 mt-5">
 			<div class="col mb-5" th:each="photo : ${photos}">
 				<div class="card" style="width: 18rem;">
-					<img th:src="@{${photo.url}}" class="card-img-top" >
+					<img th:src="@{${photo.url}}" class="card-img-top">
 					<div class="card-body">
 						<h5 class="card-title">[[${photo.title}]]</h5>
 						<p class="card-text">[[${photo.description}]]</p>
 						<a th:href="@{photo/{id}(id=${photo.id})}" class="btn btn-primary btn-sm">See more</a>
+						<a th:href="@{photo/{id}/edit(id=${photo.id})}" class="btn btn-warning btn-sm">Edit</a>
 					</div>
 				</div>
 			</div>
