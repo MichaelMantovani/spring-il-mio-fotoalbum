@@ -3,6 +3,7 @@ package org.java.spring.db.pojo;
 import java.util.Arrays;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class Photo {
 	@Column
 	private boolean visible;
 
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.REMOVE)
 	private List<Category> categories;
 
 	public Photo() {

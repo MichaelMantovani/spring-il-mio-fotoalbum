@@ -70,7 +70,7 @@ public class PhotoController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("photo/{id}/edit")
+	@GetMapping("photo/edit/{id}")
 	public String editPhoto(Model model, @PathVariable int id) {
 		
 		Photo photo = photoServ.findById(id);
@@ -78,7 +78,7 @@ public class PhotoController {
 		
 		return "photoForm";
 	}
-	@PostMapping("photo/{id}/edit")
+	@PostMapping("photo/edit/{id}")
 	public String updaetPhoto(Model model, @Valid @ModelAttribute Photo photo, BindingResult bindingResult) {
 
 

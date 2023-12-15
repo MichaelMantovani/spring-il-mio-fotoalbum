@@ -24,7 +24,7 @@
 			</div>
 			<div class="col-12" th:if="${categories}">
 				Choose your categories :
-				<div class="d-flex gap-3 mb-5 mt-3">
+				<div class="d-flex gap-3 mb-5 mt-2">
 					<div th:each="category : ${categories}" th:object="${category}">
 						<input class="mb-2" type="checkbox" th:id="*{'category-' + id}" th:value="*{id}"
 							th:field="${photo.categories}">
@@ -41,8 +41,10 @@
 				</div>
 			</div>
 			<div class="col-12">
-				<button th:if="${photo.id == 0}" type="submit" class="btn btn-primary btn-sm me-1">Create Photo</button>
-				<button th:if="${photo.id != 0}" type="submit" class="btn btn-warning btn-sm me-1">Edit Photo</button>
+				<button th:if="${photo.id == 0}" type="submit" class="btn btn-primary btn-sm me-1">Create
+					Photo</button>
+				<button th:if="${photo.id != 0}" type="submit" class="btn btn-warning btn-sm me-1">Edit
+					Photo</button>
 				<a th:replace="returnButton :: button('/', 'Return')"></a>
 			</div>
 		</form>

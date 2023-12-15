@@ -26,6 +26,7 @@ public class PhotoService {
 		return photoRepo.findByTitleContainingIgnoreCase(title);
 	}
 	
+	
 	public void delete(Photo photo) {
 		photoRepo.delete(photo);
 	}

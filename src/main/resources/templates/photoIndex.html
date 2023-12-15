@@ -16,6 +16,7 @@
 				<button class="btn btn-outline-success" type="submit">Search</button>
 			</form>
 			<a href="/photo/create" class="btn btn-primary">Add new photo</a>
+			<a href="/category" class="btn btn-secondary">My categories</a>
 		</div>
 		<div class="row row-cols-4 mt-5">
 			<div class="col mb-5" th:each="photo : ${photos}">
@@ -25,7 +26,7 @@
 						<h5 class="card-title">[[${photo.title}]]</h5>
 						<p class="card-text">[[${photo.description}]]</p>
 						<a th:href="@{photo/{id}(id=${photo.id})}" class="btn btn-primary btn-sm">See more</a>
-						<a th:href="@{photo/{id}/edit(id=${photo.id})}" class="btn btn-warning btn-sm">Edit</a>
+						<a th:href="@{photo/edit/{id}(id=${photo.id})}" class="btn btn-warning btn-sm">Edit</a>
 						<form class="d-inline-block" th:action="@{/photo/{id}/delete (id=*{photo.id})}" method="POST">
 							<button class="btn btn-danger btn-sm" type="submit">Delete</button>
 						</form>
