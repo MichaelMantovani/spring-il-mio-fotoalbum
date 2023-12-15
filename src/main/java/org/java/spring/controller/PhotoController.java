@@ -89,7 +89,7 @@ public class PhotoController {
 
 			System.out.println(bindingResult);
 			model.addAttribute("photo", photo);
-			return "pizzaForm";
+			return "photoForm";
 		}
 
 		try {

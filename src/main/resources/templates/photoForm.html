@@ -12,15 +12,31 @@
 		<form class="row g-3" th:object="${photo}" method="post">
 			<div class="col-md-6">
 				<label for="title" class="form-label">Title</label>
-				<input type="text" class="form-control" id="title" th:field="*{title}">
+				<input type="text" class="form-control" id="title" th:field="*{title}" th:errorClass="is-invalid">
+				<div th:if="${#fields.hasErrors('title')}" class="invalid-feedback">
+					<ul>
+						<li th:each="err : ${#fields.errors('title')}" th:text="${err}"></li>
+					</ul>
+				</div>
 			</div>
 			<div clas="col-12">
 				<label for="description" class="form-label">Description</label>
-				<textarea th:field="*{description}" class="form-control" id="description"></textarea>
+				<textarea th:field="*{description}" class="form-control" id="description"
+					th:errorClass="is-invalid"></textarea>
+				<div th:if="${#fields.hasErrors('description')}" class="invalid-feedback">
+					<ul>
+						<li th:each="err : ${#fields.errors('description')}" th:text="${err}"></li>
+					</ul>
+				</div>
 			</div>
 			<div class="col-md-6">
 				<label for="url" class="form-label">Photo Url</label>
-				<input type="text" class="form-control" id="url" th:field="*{url}">
+				<input type="text" class="form-control" id="url" th:field="*{url}" th:errorClass="is-invalid">
+				<div th:if="${#fields.hasErrors('url')}" class="invalid-feedback">
+					<ul>
+						<li th:each="err : ${#fields.errors('url')}" th:text="${err}"></li>
+					</ul>
+				</div>
 			</div>
 			<div class="col-12" th:if="${categories}">
 				Choose your categories :

@@ -3,7 +3,9 @@ package org.java.spring.db.pojo;
 import java.util.Arrays;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.URL;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "photo")
@@ -20,19 +23,24 @@ public class Photo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column
+	@Column(length = 60)
+	@Length(min = 5, message = "The title must be at least 5 characters")
+	@NotBlank(message = "There must be at least one title")
 	private String title;
 
-	@Column
+	@Column(columnDefinition = "TEXT")
+	@Length(min = 5, max = 150, message = "The description must contain between 5 and 150 characters")
 	private String description;
 
 	@Column
+	@URL(protocol = "https", message = "The link must be in the https protocol")
+	@NotBlank(message = "There must be a URL for the photo")
 	private String url;
 
 	@Column
 	private boolean visible;
 
-	@ManyToMany(cascade = CascadeType.REMOVE)
+	@ManyToMany
 	private List<Category> categories;
 
 	public Photo() {
