@@ -12,7 +12,13 @@
 		<div class="d-flex justify-content-center align-items-center h-100">
 			<div class="card p-2" style="width: 25rem;">
 				<img th:src="@{${photo.url}}" class="card-img-top img-fluid rounded" alt="...">
-					<h3 class="card-title mt-4">[[${photo.title}]]</h3>
+				<div class="mt-2">
+					<ul class="list-unstyled horizontal-list">
+						<li th:each="category : ${photo.categories}" class="badge" th:style="'background-color: ' + ${category.color} + ';'" >[[${category.name}]]</li>
+
+					</ul>
+				</div>
+					<h3 class="card-title mt-2">[[${photo.title}]]</h3>
 					<div class="card-body">[[${photo.description}]]</div>
 					<a th:replace="returnButton :: button('/', 'Return')"></a>
 				</div>
