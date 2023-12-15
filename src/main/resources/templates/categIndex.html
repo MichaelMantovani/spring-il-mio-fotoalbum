@@ -15,6 +15,7 @@
 				<tr>
 					<th scope="col">Id</th>
 					<th scope="col">Name</th>
+					<th scope="col">Color</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -22,8 +23,9 @@
 				<tr th:each="category : ${categories}">
 					<th>[[${category.id}]]</th>
 					<td>[[${category.name}]]s</td>
+					<td>[[${category.color}]]</td>
 					<td class="d-flex gap-2">
-						<a class="btn btn-primary btn-sm" th:href="@{category/{id}(id=${category.id})}">See more</a>
+						<a class="btn btn-secondary btn-sm" th:href="@{category/{id}(id=${category.id})}">See more</a>
 						<form th:action="@{/category/{id}/delete (id=${category.id})}" method="POST">
 							<button class="btn btn-danger btn-sm" type="submit">Delete</button>
 						</form>
@@ -31,6 +33,8 @@
 				</tr>
 			</tbody>
 		</table>
+		<a class="btn btn-primary btn-sm" href="/category/create">Create new category</a>
+		<a th:replace="returnButton :: button('/', 'Return')"></a>
 	</div>
 </body>
 

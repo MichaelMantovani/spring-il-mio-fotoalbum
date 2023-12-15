@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<div class="container mt-5">
+		<form class="row g-3" th:object="${category}" method="post">
+			<div class="col-md-6">
+				<label for="name" class="form-label">Name</label>
+				<input type="text" class="form-control" id="name" th:field="*{name}">
+			</div>
+			<div clas="col-12">
+				<label for="color" class="form-label">Color</label>
+				<input type="text" th:field="*{color}" class="form-control" id="color" />
+			</div>
+			<div class="col-12">
+				<button type="submit" class="btn btn-primary btn-sm me-1">Create Category</button>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>
