@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+	<title>My photography</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row row-cols-4 mt-5">
+			<div class="col mb-5" th:each="photo : ${photos}">
+				<div class="card" style="width: 18rem;">
+					<img th:src="@{${photo.url}}" class="card-img-top" >
+					<div class="card-body">
+						<h5 class="card-title">[[${photo.title}]]</h5>
+						<p class="card-text">[[${photo.description}]]</p>
+						<a href="#" class="btn btn-primary">See more</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

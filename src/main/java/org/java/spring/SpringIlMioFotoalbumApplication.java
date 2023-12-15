@@ -34,9 +34,18 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner{
 		List<Category> categories = categoryService.findAll();
 		
 		
-		photoService.save(new Photo("Foto1", "Molto bella", "https://picsum.photos/seed/picsum/200/300", true,categories.get(0)));
-		photoService.save(new Photo("Foto2", "Molto bella", "https://picsum.photos/seed/picsum/200/300", true, categories.get(1)));
-		photoService.save(new Photo("Foto3", "Molto bella", "https://picsum.photos/seed/picsum/200/300", true, categories.get(2)));
+		photoService.save(new Photo("Foto1", "Molto bella", "https://picsum.photos/id/237/200", true,categories.get(0)));
+		photoService.save(new Photo("Foto2", "Molto bella", "https://picsum.photos/id/230/200", true, categories.get(1)));
+		photoService.save(new Photo("Foto3", "Molto bella", "https://picsum.photos/id/233/200", true, categories.get(2)));
+		photoService.save(new Photo("Foto4", "Molto bella", "https://picsum.photos/id/234/200", true, categories.get(1)));
+		photoService.save(new Photo("Foto5", "Molto bella", "https://picsum.photos/id/235/200", true, categories.get(2)));
+		photoService.save(new Photo("Foto6", "Molto bella", "https://picsum.photos/id/236/200", true, categories.get(0)));
+		photoService.save(new Photo("Foto7", "Molto bella", "https://picsum.photos/id/238/200", true, categories.get(1)));
+		photoService.save(new Photo("Foto8", "Molto bella", "https://picsum.photos/id/239/200", true, categories.get(2)));
+		photoService.save(new Photo("Foto9", "Molto bella", "https://picsum.photos/id/240/200", true, categories.get(1)));
+		photoService.save(new Photo("Foto10", "Molto bella", "https://picsum.photos/id/241/200", true, categories.get(2)));
+
+		
 		
 		
 		
