@@ -25,6 +25,10 @@ public class PhotoService {
 
 		return photoRepo.findByTitleContainingIgnoreCase(title);
 	}
+	
+	public void delete(Photo photo) {
+		photoRepo.delete(photo);
+	}
 
 	public void save(Photo photo) {
 		photoRepo.save(photo);

@@ -20,7 +20,12 @@
 				</div>
 					<h3 class="card-title mt-2">[[${photo.title}]]</h3>
 					<div class="card-body">[[${photo.description}]]</div>
+					<div class="d-flex gap-2">
+					<form th:action="@{/photo/{id}/delete (id=*{photo.id})}" method="POST">
+						<button class="btn btn-danger btn-sm" type="submit">Delete</button>
+					</form>
 					<a th:replace="returnButton :: button('/', 'Return')"></a>
+					</div>
 				</div>
 			</div>
 		</div>

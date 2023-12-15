@@ -2,10 +2,8 @@ package org.java.spring.controller;
 
 import java.util.List;
 
-import org.hibernate.Hibernate;
 import org.java.spring.db.pojo.Category;
 import org.java.spring.db.pojo.Photo;
-import org.java.spring.db.pojo.Pizza;
 import org.java.spring.db.serv.CategoryService;
 import org.java.spring.db.serv.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,7 +79,7 @@ public class PhotoController {
 		return "photoForm";
 	}
 	@PostMapping("photo/{id}/edit")
-	public String updatePizza(Model model, @Valid @ModelAttribute Photo photo, BindingResult bindingResult) {
+	public String updaetPhoto(Model model, @Valid @ModelAttribute Photo photo, BindingResult bindingResult) {
 
 
 		if (bindingResult.hasErrors()) {
@@ -99,5 +97,15 @@ public class PhotoController {
 
 		return "redirect:/";
 	}
+	
+	@PostMapping("/photo/{id}/delete")
+	public String deletePhoto(@PathVariable int id) {
+		Photo photo = photoServ.findById(id);
+		
+		photoServ.delete(photo);
+		
+		return "redirect:/";
+	}
+	
 
 }

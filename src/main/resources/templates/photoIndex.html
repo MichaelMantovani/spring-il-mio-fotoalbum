@@ -26,6 +26,9 @@
 						<p class="card-text">[[${photo.description}]]</p>
 						<a th:href="@{photo/{id}(id=${photo.id})}" class="btn btn-primary btn-sm">See more</a>
 						<a th:href="@{photo/{id}/edit(id=${photo.id})}" class="btn btn-warning btn-sm">Edit</a>
+						<form class="d-inline-block" th:action="@{/photo/{id}/delete (id=*{photo.id})}" method="POST">
+							<button class="btn btn-danger btn-sm" type="submit">Delete</button>
+						</form>
 					</div>
 				</div>
 			</div>
