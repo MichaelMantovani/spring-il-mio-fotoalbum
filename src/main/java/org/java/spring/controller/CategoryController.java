@@ -3,18 +3,24 @@ package org.java.spring.controller;
 import java.util.List;
 
 import org.java.spring.db.pojo.Category;
+import org.java.spring.db.pojo.Photo;
 import org.java.spring.db.serv.CategoryService;
+import org.java.spring.db.serv.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class CategoryController {
 	
 	@Autowired
 	private CategoryService catServ;
+	
+	@Autowired
+	private PhotoService photoServ;
 	
 	@GetMapping("/category")
 	public String getCategoriesIndex(Model model) {
@@ -29,6 +35,23 @@ public class CategoryController {
 		model.addAttribute("category", catServ.findById(id));
 
 		return "categDetail";
+	}
+	
+	@PostMapping("/category/{id}/delete")
+	public String deleteCategory(@PathVariable int id) {
+
+		Category category = catServ.findById(id);
+
+		List<Photo> categoryPhoto = category.getPhotos();
+		categoryPhoto.forEach(photo -> {
+
+			photo.getCategories().remove(category);
+			photoServ.save(photo);
+		});
+
+		catServ.delete(category);
+
+		return "redirect:/category";
 	}
 
 }

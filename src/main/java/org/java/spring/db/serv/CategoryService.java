@@ -25,6 +25,10 @@ public class CategoryService {
 
 		return categoryRepo.findByNameContainingIgnoreCase(name);
 	}
+	
+	public void delete(Category category) {
+		categoryRepo.delete(category);
+	}
 
 	public void save(Category category) {
 		categoryRepo.save(category);

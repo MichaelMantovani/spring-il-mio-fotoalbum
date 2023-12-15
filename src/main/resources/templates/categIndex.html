@@ -22,7 +22,12 @@
 				<tr th:each="category : ${categories}">
 					<th>[[${category.id}]]</th>
 					<td>[[${category.name}]]s</td>
-					<td><a class="btn btn-primary btn-sm" th:href="@{category/{id}(id=${category.id})}">See more</a></td>
+					<td class="d-flex gap-2">
+						<a class="btn btn-primary btn-sm" th:href="@{category/{id}(id=${category.id})}">See more</a>
+						<form th:action="@{/category/{id}/delete (id=${category.id})}" method="POST">
+							<button class="btn btn-danger btn-sm" type="submit">Delete</button>
+						</form>
+					</td>
 				</tr>
 			</tbody>
 		</table>
