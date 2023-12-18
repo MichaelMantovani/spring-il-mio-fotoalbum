@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,6 +33,7 @@ public class Category {
 	private String color;
 	
 	@ManyToMany(mappedBy = "categories")
+	@JsonIgnore
 	private List<Photo> photos;
 	
 	public Category() {}
