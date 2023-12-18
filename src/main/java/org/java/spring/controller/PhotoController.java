@@ -7,6 +7,7 @@ import org.java.spring.db.pojo.Photo;
 import org.java.spring.db.serv.CategoryService;
 import org.java.spring.db.serv.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,11 +29,14 @@ public class PhotoController {
 	private CategoryService catServ;
 
 	@GetMapping()
-	public String getPhotosIndex(Model model,@RequestParam(name = "searchValue", required = false) String searchValue) {
+	public String getPhotosIndex(Model model,@RequestParam(name = "searchValue", required = false) String searchValue, Authentication authentication) {
 		List<Photo> photos = searchValue == null ? photoServ.findAll() : photoServ.findByTitle(searchValue);
 		
 		model.addAttribute("searchValue", searchValue);
 		model.addAttribute("photos", photos);
+		if(authentication != null) {
+			model.addAttribute("username", authentication.getName());
+		}
 
 		return "photoIndex";
 	}

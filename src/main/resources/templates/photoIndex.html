@@ -9,16 +9,26 @@
 
 <body>
 	<div class="container">
-		<div class="d-flex gap-3 align-items-start mt-4">
-			<form class="d-flex w-25 mb-4" role="search">
-				<input class="form-control me-2" type="search" placeholder="Search" th:value="*{searchValue}"
-					name="searchValue">
-				<button class="btn btn-outline-success" type="submit">Search</button>
-			</form>
-				<a sec:authorize="hasAuthority('ADMIN')" href="/photo/create" class="btn btn-primary">Add new photo</a>
-
-			<a href="/category" class="btn btn-secondary">My categories</a>
-		</div>
+		<div class="row mt-4">
+				<div class="col-10 d-flex align-items-start gap-3">
+					<form class="d-flex w-25 mb-4" role="search">
+						<input class="form-control me-2" type="search" placeholder="Search" th:value="*{searchValue}"
+							name="searchValue">
+						<button class="btn btn-outline-success" type="submit">Search</button>
+					</form>
+					<div sec:authorize="hasAuthority('ADMIN')">
+						<a href="/photo/create" class="btn btn-primary">Add new photo</a>
+					</div>
+					<a href="/category" class="btn btn-secondary">My categories</a>
+				</div>
+				<div class="col-2 d-flex flex-column align-items-center" th:if="${username} != null">
+					User: [[${username}]]
+					<a class="btn btn-danger btn-sm mt-2" href="/logout">Logout</a>
+				</div>
+				<div class="col-2" th:if="${username} == null">
+					<a class="btn btn-primary" href="/login">Login</a>
+				</div>
+			</div>
 		<div class="row row-cols-4 mt-5">
 			<div class="col mb-5" th:each="photo : ${photos}">
 				<div class="card" style="width: 18rem;">
