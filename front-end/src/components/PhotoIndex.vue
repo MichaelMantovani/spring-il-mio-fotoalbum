@@ -1,10 +1,16 @@
 <script setup>
+import { ref } from 'vue';
+
+const value = ref('')
 const props = defineProps({
     photos:{
         type : Array,
         required: true
     }
-})
+});
+
+
+const emit = defineEmits()
 </script>
 
 
@@ -15,9 +21,9 @@ const props = defineProps({
         <h1 class="text-center">My photos</h1>
         <div class="row mt-4">
 				<div class="col-10 d-flex align-items-start gap-3">
-					<form class="d-flex w-25 mb-4" role="search">
+					<form @submit.prevent="emit('searchSubmit', value)" class="d-flex w-25 mb-4" role="search">
 						<input class="form-control me-2" type="search" placeholder="Search" 
-							name="searchValue">
+							name="searchValue" v-model="value">
 						<button class="btn btn-outline-success" type="submit">Search</button>
 					</form>
 					<a href="#" class="btn btn-secondary">My categories</a>

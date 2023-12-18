@@ -4,10 +4,21 @@ import PhotoIndex from './components/PhotoIndex.vue';
 import { onMounted, ref } from 'vue';
 
 const photos= ref(null)
+const searchValue= ref(null)
 
 const getPhotos = async() => {
-  const data = await axios.get('http://localhost:8080/api/photo')
-  photos.value = data.data
+  if(searchValue.value == null){
+    const data = await axios.get('http://localhost:8080/api/photo')
+    photos.value = data.data
+  } else {
+    const data = await axios.get('http://localhost:8080/api/photo', {params : {searchValue : searchValue.value}})
+    photos.value = data.data
+  }
+}
+
+const handleSearch = (value) => {
+  searchValue.value = value
+  getPhotos()
 }
 
 onMounted(getPhotos)
@@ -15,7 +26,7 @@ onMounted(getPhotos)
 </script>
 
 <template>
-  <PhotoIndex :photos="photos"/>
+  <PhotoIndex :photos="photos" @searchSubmit="handleSearch"/>
 </template>
 
 
