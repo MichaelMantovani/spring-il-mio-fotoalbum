@@ -25,15 +25,15 @@
 					<td>[[${category.name}]]s</td>
 					<td>[[${category.color}]]</td>
 					<td class="d-flex gap-2">
-						<a class="btn btn-secondary btn-sm" th:href="@{category/{id}(id=${category.id})}">See more</a>
-						<form th:action="@{/category/{id}/delete (id=${category.id})}" method="POST">
+						<a class="btn btn-primary btn-sm" th:href="@{category/{id}(id=${category.id})}">See more</a>
+						<form sec:authorize="hasAuthority('ADMIN')" th:action="@{/category/{id}/delete (id=${category.id})}" method="POST">
 							<button class="btn btn-danger btn-sm" type="submit">Delete</button>
 						</form>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<a class="btn btn-primary btn-sm" href="/category/create">Create new category</a>
+		<a sec:authorize="hasAuthority('ADMIN')" class="btn btn-primary btn-sm" href="/category/create">Create new category</a>
 		<a th:replace="returnButton :: button('/', 'Return')"></a>
 	</div>
 </body>
