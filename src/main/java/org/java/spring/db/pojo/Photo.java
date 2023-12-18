@@ -6,6 +6,8 @@ import java.util.List;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -59,7 +61,8 @@ public class Photo {
 	public List<Category> getCategories() {
 		return categories;
 	}
-
+	
+	@JsonIgnore
 	private void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
