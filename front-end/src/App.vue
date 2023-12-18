@@ -1,6 +1,5 @@
 <script setup>
 import axios from 'axios';
-import PhotoIndex from './components/PhotoIndex.vue';
 import { onMounted, ref } from 'vue';
 
 const photos= ref(null)
@@ -26,7 +25,7 @@ onMounted(getPhotos)
 </script>
 
 <template>
-  <PhotoIndex :photos="photos" @searchSubmit="handleSearch"/>
+  <RouterView :photos="photos" @searchSubmit="handleSearch"></RouterView>
 </template>
 
 
