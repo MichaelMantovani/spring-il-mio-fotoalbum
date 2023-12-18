@@ -2,6 +2,8 @@ package org.java.spring.db.pojo;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "category")
@@ -19,9 +22,12 @@ public class Category {
 	private int id;
 	
 	@Column
+	@Length(min = 4, message = "The title must be at least 4 characters")
+	@NotBlank(message = "There must be at least one name")
 	private String name;
 	
 	@Column
+	@NotBlank(message = "There must be a color for the category")
 	private String color;
 	
 	@ManyToMany(mappedBy = "categories")

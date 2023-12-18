@@ -12,14 +12,25 @@
 		<form class="row g-3" th:object="${category}" method="post">
 			<div class="col-md-6">
 				<label for="name" class="form-label">Name</label>
-				<input type="text" class="form-control" id="name" th:field="*{name}">
+				<input type="text" class="form-control" id="name" th:field="*{name}" th:errorClass="is-invalid">
+				<div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+					<ul>
+						<li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
+					</ul>
+				</div>
 			</div>
 			<div clas="col-12">
 				<label for="color" class="form-label">Color</label>
-				<input type="text" th:field="*{color}" class="form-control" id="color" />
+				<input type="text" th:field="*{color}" class="form-control" id="color" th:errorClass="is-invalid"/>
+				<div th:if="${#fields.hasErrors('color')}" class="invalid-feedback">
+					<ul>
+						<li th:each="err : ${#fields.errors('color')}" th:text="${err}"></li>
+					</ul>
+				</div>
 			</div>
 			<div class="col-12">
 				<button type="submit" class="btn btn-primary btn-sm me-1">Create Category</button>
+				<a th:replace="returnButton :: button('/category', 'Return')"></a>
 			</div>
 		</form>
 	</div>

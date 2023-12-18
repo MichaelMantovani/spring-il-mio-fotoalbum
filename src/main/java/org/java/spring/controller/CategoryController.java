@@ -56,7 +56,7 @@ public class CategoryController {
 
 			model.addAttribute("cateogory", category);
 
-			return "ingredienteForm";
+			return "categoryForm";
 		}
 
 		catServ.save(category);

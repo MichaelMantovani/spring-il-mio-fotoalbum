@@ -14,21 +14,23 @@
 				<img th:src="@{${photo.url}}" class="card-img-top img-fluid rounded" alt="...">
 				<div class="mt-2">
 					<ul class="list-unstyled horizontal-list">
-						<li th:each="category : ${photo.categories}" class="badge" th:style="'background-color: ' + ${category.color} + ';'" >[[${category.name}]]</li>
+						<li th:each="category : ${photo.categories}" class="badge"
+							th:style="'background-color: ' + ${category.color} + ';'">[[${category.name}]]</li>
 
 					</ul>
 				</div>
-					<h3 class="card-title mt-2">[[${photo.title}]]</h3>
-					<div class="card-body">[[${photo.description}]]</div>
-					<div class="d-flex gap-2">
+				<h3 class="card-title mt-2">[[${photo.title}]]</h3>
+				<div class="card-body">[[${photo.description}]]</div>
+				<div class="d-flex gap-2">
+					<a th:href="@{photo/edit/{id}(id=${photo.id})}" class="btn btn-warning btn-sm">Edit</a>
 					<form th:action="@{/photo/{id}/delete (id=*{photo.id})}" method="POST">
 						<button class="btn btn-danger btn-sm" type="submit">Delete</button>
 					</form>
 					<a th:replace="returnButton :: button('/', 'Return')"></a>
-					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </body>
 
