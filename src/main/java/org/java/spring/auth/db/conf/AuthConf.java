@@ -23,7 +23,7 @@ public class AuthConf {
 				.requestMatchers("/**", "/photo/**")
 				.permitAll()
 				.and().formLogin()
-				.and().logout().logoutSuccessUrl("/");
+				.and().logout().logoutSuccessUrl("http://localhost:5173/");
 		return http.build();
 	}
 
