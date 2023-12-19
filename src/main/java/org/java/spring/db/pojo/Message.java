@@ -2,14 +2,11 @@ package org.java.spring.db.pojo;
 
 import org.java.spring.auth.db.pojo.User;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -34,9 +31,7 @@ public class Message {
 	@NotBlank
 	private String name;
 	
-	@ManyToOne
-	@JsonIgnore
-	private User user;
+
 	
 	public Message() {}
 	
@@ -44,18 +39,9 @@ public class Message {
 		setMessage(message);
 		setEmail(email);
 		setName(name);
-		setUser(user);
 	}
 	
-	
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	public int getId() {
 		return id;
