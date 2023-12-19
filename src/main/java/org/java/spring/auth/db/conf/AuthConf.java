@@ -22,7 +22,7 @@ public class AuthConf {
 				.hasAuthority("ADMIN")
 				.requestMatchers("/**", "/photo/**")
 				.permitAll()
-				.and().formLogin()
+				.and().formLogin().defaultSuccessUrl("http://localhost:8080/")
 				.and().logout().logoutSuccessUrl("http://localhost:5173/");
 		return http.build();
 	}
