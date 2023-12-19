@@ -8,21 +8,22 @@
 </head>
 
 <body>
-	<div class="container text-center mt-4">
+	<div class="container mt-4">
 		<div>
-			<span>Name: </span>
+			<span><strong>Name: </strong> </span>
 			[[${message.name}]]
 		</div>
 		<div>
-			<span>Email: </span>
+			<span><strong>Email: </strong></span>
 			[[${message.email}]]
 		</div>
-		<div>
+		<div class="text-break">
+			<span><strong>Message: </strong></span>
 			[[${message.message}]]
 		</div>
 		<div class="d-flex gap-1 justify-content-center mt-4">
 		<a th:replace="returnButton :: button('/message', 'Return')"></a>
-		<form sec:authorize="hasAuthority('ADMIN')" th:action="@{/message/{id}/delete (id=${message.id})}"
+		<form th:action="@{/message/{id}/delete (id=${message.id})}"
 			method="POST">
 			<button class="btn btn-danger btn-sm" type="submit">Delete</button>
 		</form>
