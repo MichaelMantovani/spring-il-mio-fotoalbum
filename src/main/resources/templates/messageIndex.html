@@ -10,25 +10,28 @@
 <body>
 	<div class="container mt-4">
 		<h3 class="text-center mb-5">My messages</h3>
-	<table class="table">
-		<thead>
-			<tr>
-				<th scope="col">Name</th>
-				<th scope="col">Email</th>
-				<th scope="col" colspan="2">Message</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="message : ${messages}">
-				<td>[[${message.name}]]</td>
-				<td>[[${message.email}]]</td>
-				<td>[[${message.getShortMessage}]]</td>
-				<td>
-					<a th:href="@{message/{id}(id=${message.id})}" class="btn btn-primary btn-sm">See more</a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Email</th>
+					<th scope="col" colspan="2">Message</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="message : ${messages}">
+					<td>[[${message.name}]]</td>
+					<td>[[${message.email}]]</td>
+					<td>[[${message.getShortMessage}]]</td>
+					<td class="d-flex gap-1">
+						<a th:href="@{message/{id}(id=${message.id})}" class="btn btn-primary btn-sm">See more</a>
+						<form th:action="@{/message/{id}/delete (id=${message.id})}" method="POST">
+							<button class="btn btn-danger btn-sm" type="submit">Delete</button>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 		<a th:replace="returnButton :: button('/', 'Return')"></a>
 	</div>
 </body>
