@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<div class="container mt-4">
+		<h3 class="text-center mb-5">My messages</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Name</th>
+				<th scope="col">Email</th>
+				<th scope="col" colspan="2">Message</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="message : ${messages}">
+				<td>[[${message.name}]]</td>
+				<td>[[${message.email}]]</td>
+				<td>[[${message.getShortMessage}]]</td>
+				<td>
+					<a th:href="@{message/{id}(id=${message.id})}" class="btn btn-primary btn-sm">See more</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+</body>
+
+</html>

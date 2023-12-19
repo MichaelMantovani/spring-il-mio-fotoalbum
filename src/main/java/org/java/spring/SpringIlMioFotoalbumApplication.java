@@ -83,11 +83,11 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 		User michAdmin = new User("MichAdmin", pws, roleAdmin);
 		userService.save(michAdmin);
 		
-		Message message = new Message("Sono molto belle le tue foto", "fabio.rossi@gmail.com", michAdmin);
-		Message message1 = new Message("Mi piacerebbe discutere di una possibile collaborazione", "alice.jones@gmail.com", michAdmin);
-		Message message2 = new Message("Complimenti per il tuo lavoro", "carlo.bianchi@yahoo.com", michAdmin);
-		Message message3 = new Message("Ho una domanda riguardo al tuo portfolio", "giulia.verdi@hotmail.com", michAdmin);
-		Message message4 = new Message("Ciao, vorrei richiedere un preventivo per un progetto", "marco.rossi@gmail.com", michAdmin);
+		Message message = new Message("Sono molto belle le tue foto", "fabio.rossi@gmail.com","Fabio", michAdmin);
+		Message message1 = new Message("Mi piacerebbe discutere di una possibile collaborazione","Alice", "Alice", michAdmin);
+		Message message2 = new Message("Complimenti per il tuo lavoro", "carlo.bianchi@yahoo.com","Carlo", michAdmin);
+		Message message3 = new Message("Ho una domanda riguardo al tuo portfolio", "giulia.verdi@hotmail.com","Giulia", michAdmin);
+		Message message4 = new Message("Ciao, vorrei richiedere un preventivo per un progettofgrgrgrhgrgiorjgjirgrijgiorjgorigiorjriojgorijriojgriojgroigjrgiojergioerjgioefhjvuiodefhviopdfuhvbdf8i9p7vyedfm90[cujr0[mavtuer0[8tvuer890[vgnmher9pgv78yerhn890[vberyugv98meryg0vbnm8e5gv89amegv98meryher98mvher8m9ervhvm89herv80m9rhva8m9h", "marco.rossi@gmail.com","Marco", michAdmin);
 		messageService.save(message);
 		messageService.save(message1);
 		messageService.save(message2);

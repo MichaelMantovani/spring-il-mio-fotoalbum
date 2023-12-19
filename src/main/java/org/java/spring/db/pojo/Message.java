@@ -30,15 +30,20 @@ public class Message {
 	@NotBlank
 	private String email;
 	
+	@Column
+	@NotBlank
+	private String name;
+	
 	@ManyToOne
 	@JsonIgnore
 	private User user;
 	
 	public Message() {}
 	
-	public Message(String message, String email, User user) {
+	public Message(String message, String email, String name, User user) {
 		setMessage(message);
 		setEmail(email);
+		setName(name);
 		setUser(user);
 	}
 	
@@ -56,9 +61,21 @@ public class Message {
 		return id;
 	}
 
+	public String getShortMessage() {
+		int maxLength = 60; 
+
+        if (message.length() > maxLength) {
+            return message.substring(0, maxLength) + "...";
+        } else {
+            return message;
+        }
+	}
+	
+	
 	public String getMessage() {
 		return message;
 	}
+	
 
 	public void setMessage(String message) {
 		this.message = message;
@@ -71,6 +88,16 @@ public class Message {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 	
 	
 }

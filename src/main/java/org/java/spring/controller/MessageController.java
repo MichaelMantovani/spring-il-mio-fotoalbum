@@ -21,10 +21,9 @@ public class MessageController {
 	
 	@GetMapping("/message")
 	public String getPhotosIndex(Model model,@RequestParam(name = "searchValue", required = false) String searchValue, Authentication authentication) {
-		List<Message> message = searchValue == null ? messServ.findAll() : messServ.findByMessage(searchValue);
-		
+		List<Message> messages = searchValue == null ? messServ.findAll() : messServ.findByMessage(searchValue);
 		model.addAttribute("searchValue", searchValue);
-		model.addAttribute("message", message);
+		model.addAttribute("messages", messages);
 		if(authentication != null) {
 			model.addAttribute("username", authentication.getName());
 		}
@@ -36,7 +35,7 @@ public class MessageController {
 	public String getPhotoDetail(Model model, @PathVariable int id) {
 		model.addAttribute("message", messServ.findById(id));
 
-		return "photoDetail";
+		return "messageDetail";
 	}
 	
 	@PostMapping("/message/{id}/delete")
