@@ -22,7 +22,8 @@
 				<h3 class="card-title mt-2">[[${photo.title}]]</h3>
 				<div class="card-body">[[${photo.description}]]</div>
 				<div class="d-flex gap-2">
-					<a sec:authorize="hasAuthority('ADMIN')" th:href="@{photo/edit/{id}(id=${photo.id})}" class="btn btn-warning btn-sm">Edit</a>
+					<a sec:authorize="hasAnyAuthority('ADMIN')" th:href="@{/photo/edit/{id} (id=*{photo.id})}"
+							class="btn btn-warning btn-sm">Edit</a>
 					<form sec:authorize="hasAuthority('ADMIN')" th:action="@{/photo/{id}/delete (id=*{photo.id})}" method="POST">
 						<button class="btn btn-danger btn-sm" type="submit">Delete</button>
 					</form>

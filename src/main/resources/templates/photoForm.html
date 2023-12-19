@@ -56,12 +56,15 @@
 					<label class="form-check-label" for="visible">Visible</label>
 				</div>
 			</div>
-			<div class="col-12">
-				<button th:if="${photo.id == 0}" type="submit" class="btn btn-primary btn-sm me-1">Create
-					Photo</button>
-				<button th:if="${photo.id != 0}" type="submit" class="btn btn-warning btn-sm me-1">Edit
+			<div class="col-12" th:if="${photo.id == 0}">
+				<button type="submit" class="btn btn-primary btn-sm me-1">Create
 					Photo</button>
 				<a th:replace="returnButton :: button('/', 'Return')"></a>
+			</div>
+			<div class="col-12" th:if="${photo.id != 0}">
+				<button type="submit" class="btn btn-warning btn-sm me-1">Edit
+					Photo</button>
+				<a th:href="@{/photo/{id}(id=${photo.id})}" class="btn btn-secondary btn-sm">Return</a>
 			</div>
 		</form>
 	</div>
