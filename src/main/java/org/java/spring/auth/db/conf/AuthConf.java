@@ -18,7 +18,7 @@ public class AuthConf {
 		http.csrf().disable()
 		.cors().disable()
 		.authorizeHttpRequests()
-		.requestMatchers("/photo/create/**", "/*/edit/**", "/*/*/delete/**", "/*/*/*/create", "/message/**")
+		.requestMatchers("/photo/create/**", "/*/edit/**", "/*/*/delete/**", "/*/*/*/create")
 				.hasAuthority("ADMIN")
 				.requestMatchers("/**", "/photo/**")
 				.permitAll()

@@ -98,6 +98,11 @@ public class Message {
 	}
 	
 	
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "[ id: " + getId() + "]: " + getMessage();
+	}
+
 	
 }
