@@ -8,9 +8,28 @@
 </head>
 
 <body>
-	<div class="container text-center mt-5">
-	<h3>[[${category.name}]]</h3>
-	<a th:replace="returnButton :: button('/category', 'Return')"></a>
+	<div class="container mt-5">
+		<div class="d-flex flex-column justify-content-center align-items-center gap-1">
+			<h3> [[${category.name}]]</h3>
+			<div class="badge rounded-pill" th:style="'background-color: ' + ${category.color} + ';'">
+				[[${category.name}]]</div>
+		</div>
+		<div class="row row-cols-5 mt-5">
+			<div class="col" th:each="photo : ${photos}">
+				<div class="card p-2">
+					<img th:src="@{${photo.url}}" class="card-img-top img-fluid rounded" alt="...">
+					<div class="car-body">
+						<h5 class="card-title mt-2">[[${photo.title}]]</h5>
+						<p class="card-text">[[${photo.description}]]</p>
+						<a th:href="@{/photo/{id}(id=${photo.id})}" class="btn btn-primary btn-sm d-inline-block">See
+							more</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mt-5">
+			<a th:replace="returnButton :: button('/category', 'Return to categories')" class="mt-4"></a>
+		</div>
 	</div>
 </body>
 

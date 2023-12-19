@@ -36,7 +36,10 @@ public class CategoryController {
 
 	@GetMapping("/category/{id}")
 	public String getCategoryDetail(Model model, @PathVariable int id) {
-		model.addAttribute("category", catServ.findById(id));
+		Category category = catServ.findById(id);
+		model.addAttribute("category", category);
+		List<Photo> photosByCateg = category.getPhotos();
+		model.addAttribute("photos", photosByCateg);
 
 		return "categDetail";
 	}

@@ -27,7 +27,7 @@
 					<form sec:authorize="hasAuthority('ADMIN')" th:action="@{/photo/{id}/delete (id=*{photo.id})}" method="POST">
 						<button class="btn btn-danger btn-sm" type="submit">Delete</button>
 					</form>
-					<a th:replace="returnButton :: button('/', 'Return')"></a>
+					<a th:replace="returnButton :: button('/', 'Return home')"></a>
 				</div>
 			</div>
 		</div>
