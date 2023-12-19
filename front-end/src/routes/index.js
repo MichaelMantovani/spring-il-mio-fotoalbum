@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import PhotoIndex from '../pages/PhotoIndex.vue';
 import PhotoDetail from '../pages/PhotoDetail.vue';
-import CategoryIndex from '../pages/CategoryIndex.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -17,9 +16,9 @@ const router = createRouter({
       name: 'detail',
     },
     {
-      path: '/categories',
-      component: CategoryIndex,
-      name: 'categories',
+      path: '/message',
+      componet: MessageForm,
+      name: 'message',
     },
   ],
 });

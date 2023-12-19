@@ -22,7 +22,6 @@ const emit = defineEmits();
           <input class="form-control me-2" type="search" placeholder="Search" name="searchValue" v-model="value" />
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-        <RouterLink :to="{ name: 'categories' }" class="btn btn-secondary">Categories</RouterLink>
       </div>
       <div class="col-2">
         <a class="btn btn-primary" href="http://localhost:8080/login">Login</a>

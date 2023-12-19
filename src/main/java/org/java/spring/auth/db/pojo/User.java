@@ -3,6 +3,7 @@ package org.java.spring.auth.db.pojo;
 import java.util.Collection;
 import java.util.List;
 
+import org.java.spring.db.pojo.Message;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +15,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class User implements UserDetails {
@@ -30,6 +32,9 @@ public class User implements UserDetails {
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Role> roles;
+	
+	@OneToMany
+	private List<Message> messages;
 
 	public User() {
 
@@ -68,6 +73,16 @@ public class User implements UserDetails {
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+	
+	
+
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
 	}
 
 	public int getId() {
