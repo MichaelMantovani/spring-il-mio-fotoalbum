@@ -8,8 +8,10 @@ import org.java.spring.auth.db.pojo.User;
 import org.java.spring.auth.db.serv.RoleService;
 import org.java.spring.auth.db.serv.UserService;
 import org.java.spring.db.pojo.Category;
+import org.java.spring.db.pojo.Message;
 import org.java.spring.db.pojo.Photo;
 import org.java.spring.db.serv.CategoryService;
+import org.java.spring.db.serv.MessageService;
 import org.java.spring.db.serv.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -30,6 +32,9 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 
 	@Autowired
 	private RoleService roleService;
+	
+	@Autowired 
+	private MessageService messageService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringIlMioFotoalbumApplication.class, args);
@@ -77,6 +82,18 @@ public class SpringIlMioFotoalbumApplication implements CommandLineRunner {
 //		Inizializzazione utente admin
 		User michAdmin = new User("MichAdmin", pws, roleAdmin);
 		userService.save(michAdmin);
+		
+		Message message = new Message("Sono molto belle le tue foto", "fabio.rossi@gmail.com", michAdmin);
+		Message message1 = new Message("Mi piacerebbe discutere di una possibile collaborazione", "alice.jones@gmail.com", michAdmin);
+		Message message2 = new Message("Complimenti per il tuo lavoro", "carlo.bianchi@yahoo.com", michAdmin);
+		Message message3 = new Message("Ho una domanda riguardo al tuo portfolio", "giulia.verdi@hotmail.com", michAdmin);
+		Message message4 = new Message("Ciao, vorrei richiedere un preventivo per un progetto", "marco.rossi@gmail.com", michAdmin);
+		messageService.save(message);
+		messageService.save(message1);
+		messageService.save(message2);
+		messageService.save(message3);
+		messageService.save(message4);
+
 
 	}
 

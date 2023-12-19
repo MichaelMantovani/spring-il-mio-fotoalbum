@@ -36,9 +36,10 @@ public class Message {
 	
 	public Message() {}
 	
-	public Message(String message, String email) {
+	public Message(String message, String email, User user) {
 		setMessage(message);
 		setEmail(email);
+		setUser(user);
 	}
 	
 	
